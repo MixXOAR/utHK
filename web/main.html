@@ -3,53 +3,166 @@
 <head>
 	<meta charset="utf-8">
 	<title>utHK</title>
-	<link rel="icon" type="image/jpg" href="favicon.jpg">
-	<style type="text/css">
+	<script type="text/javascript" src="/eel.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="js/colpick.js"></script>
+    <script type="text/javascript" src="js/magic_mouse.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="css/colpick.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="icon" type="image/jpg" href="favicon.jpg">
+    <link rel="stylesheet" href="css/magic-mouse.css" />
+    <link rel="stylesheet" href="css/style.css">
+
+	<script type="text/javascript">
+        document.onkeydown = function(e) {
+        if(event.keyCode == 123) {
+            return false;
+        }
+        if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)){
+            return false;
+        }
+        if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)){
+            return false;
+        }
+        if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){
+            return false;
+        }
+        }
+    </script>
+    <style type="text/css">
 		@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
-		body {background: #030200;}
-		#maintext {text-shadow: 1px 1px 2px white; font-family: 'Oswald', sans-serif; color: white}
+		body {background: #060606;}
+		#maintext {text-shadow: 0px 0px 3px white; font-family: 'Oswald', sans-serif; color: white}
+		.mybutton1 {height: 26px;margin-top: 19px;margin-left: 5px;border: 2px solid #C1C1C1;background: #060606;border-radius: 3px;color: white;padding-bottom: 3px;margin-left: 10px;transition: 0.3s;cursor: none}
+		.mybutton1:hover {
+			box-shadow: 0px 0px 6px white;
+			text-shadow: 0px 0px 1px white;
+			transition: 0.3s;
+			border: 2px solid #FFFFFF;
+			cursor: none
+		}
+		button {cursor: none}
+		button:hover {cursor: none}
 	</style>
+    <script type="module">
+        var app = new Vue({
+        el: "#app",
+        data: {
+            selectedEffect:'example #1',
+            effectList:[
+                "example #1",
+                "example #2",
+                "example #3",
+                "example #4",
+                "example #5",
+            ],
+        options: {
+            cursorOuter: "circle-basic",
+            hoverEffect: "circle-move",
+            hoverItemMove: false,
+            defaultCursor: false,
+            outerWidth: 30,
+            outerHeight: 30
+                }
+            },
+        mounted(){
+            magicMouse(this.options);
+            prettier();
+        },
+        methods:{
+            changeEffect(){
+                document.body.style.cursor = "unset";
+                var cursorDOM = document.getElementById("magicMouseCursor");
+                var pointerDOM = document.getElementById("magicPointer");
+                if(cursorDOM){
+                    cursorDOM.parentNode.removeChild(cursorDOM)
+                }
+                if(pointerDOM){
+                    pointerDOM.parentNode.removeChild(pointerDOM)
+                }
+                switch(this.selectedEffect){
+                case "example #1":
+                    this.options.hoverEffect = "circle-move"
+                    this.options.cursorOuter = "circle-basic"
+                break;
+                case "example #2":
+                    this.options.hoverEffect = "pointer-overlay"
+                    this.options.cursorOuter = "disable"
+                break;
+                case "example #3":
+                    this.options.hoverEffect = "pointer-blur"
+                    this.options.cursorOuter = "disable"
+                break;
+                case "example #4":
+                    this.options.outerWidth = 41;
+                    this.options.outerHeight = 41;
+                    this.options.hoverEffect = "pointer-blur"
+                    this.options.cursorOuter = "circle-basic"
+                break;
+                case "example #5":
+                    this.options.outerWidth = 41;
+                    this.options.outerHeight = 41;
+                    this.options.hoverEffect = "circle-move"
+                    this.options.cursorOuter = "circle-basic"
+                    this.options.defaultCursor = true
+                break;
+                }
+            magicMouse(this.options);
+
+            let codeBlock = document.getElementById("codeSection")
+            codeBlock.classList.remove("prettyprinted")
+            codeBlock.innerHTML = "options = " + JSON.stringify(this.options, null, 2) + "; \n magicMouse(options);";
+            prettier();
+            }
+        },
+        });
+    </script>
+
 </head>
 <body>
-	<h1 id="maintext" style="margin-bottom: 0px; display: flex">utHK<p style="font-size: 13px; display: flex; margin-bottom: 0px; margin-left: 3px;margin-top: 23px;">UNDERTALE V1.001 CHEAT</p></h1>
-	<div style="display: flex">
-		<p id="maintext" style="margin-bottom: 0px">health</p>
-		<input id="health" type="number" style="width: 90px; height: 12px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white">
-		<button id="applyhealth" style=" height: 16px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white; padding-bottom: 3px">OK</button>
 
-		<p id="maintext" style="margin-bottom: 0px; margin-left: 59px">money</p>
-		<input id="money" type="number" style="width: 80px; height: 12px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white">
-		<button id="applymoney" style=" height: 16px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white; padding-bottom: 3px">OK</button>
+	<h1 id="maintext" style="margin-bottom: 0px; display: flex; margin-top: 10px; margin-left: 10px;">utHK<p style="font-size: 13px; display: flex; margin-bottom: 0px; margin-left: 3px;margin-top: 28px; margin-left: 10px;">UNDERTALE V1.001 CHEAT</p></h1>
+	<div style="display: flex">
+		<p id="maintext" style="margin-bottom: 0px; margin-left: 10px; margin-top: 15px; font-size: 20px">health</p>
+		<input id="health" type="number" style="width: 90px; height: 22px; margin-top: 21px; margin-left: 5px; border: 2px solid #FFFFFF; background: #040404; border-radius: 7px; color: white; margin-left: 10px">
+		<button id="applyhealth" class="mybutton1">OK</button>
+
+		<p id="maintext" style="margin-bottom: 0px; margin-left: 69px; margin-top: 15px; font-size: 20px">money</p>
+		<input id="money" type="number" style="width: 90px; height: 22px; margin-top: 21px; margin-left: 5px; border: 2px solid #FFFFFF; background: #040404; border-radius: 7px; color: white; margin-left: 10px">
+		<button id="applymoney" class="mybutton1">OK</button>
 	</div>
 
 	<div style="display: flex">
-		<p id="maintext" style="margin-bottom: 0px">nickname</p>
-		<input id="nickname" style="width: 80px; height: 12px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white">
-		<button id="applynickname" style=" height: 16px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white; padding-bottom: 3px">OK</button>
+		<p id="maintext" style="margin-bottom: 0px; margin-left: 10px; margin-top: 15px; font-size: 20px">nickname</p>
+		<input id="nickname" style="width: 90px; height: 22px; margin-top: 21px; margin-left: 5px; border: 2px solid #FFFFFF; background: #040404; border-radius: 7px; color: white; margin-left: 10px">
+		<button id="applynickname" class="mybutton1">OK</button>
 
-		<p id="maintext" style="margin-bottom: 0px; margin-left: 40px">nickflex</p>
-		<input id="nickflex" style="width: 80px; height: 12px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white">
-		<button id="applynickflex" style=" height: 16px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white; padding-bottom: 3px">OK</button>
+		<p id="maintext" style="margin-bottom: 0px; margin-left: 43px; margin-top: 15px; font-size: 20px">nickflex</p>
+		<input id="nickflex" style="width: 90px; height: 22px; margin-top: 21px; margin-left: 5px; border: 2px solid #FFFFFF; background: #040404; border-radius: 7px; color: white; margin-left: 10px">
+		<button id="applynickflex" class="mybutton1">OK</button>
 	</div>
 
 	<div style="display: flex">
-		<p id="maintext" style="margin-bottom: 0px">kills</p>
-		<input id="kills" type="number" style="width: 80px; height: 12px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white">
-		<button id="applykills" style=" height: 16px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white; padding-bottom: 3px">OK</button>
+		<p id="maintext" style="margin-bottom: 0px; margin-left: 10px; margin-top: 15px; font-size: 20px">kills</p>
+		<input id="kills" type="number" style="width: 90px; height: 22px; margin-top: 21px; margin-left: 5px; border: 2px solid #FFFFFF; background: #040404; border-radius: 7px; color: white; margin-left: 10px">
+		<button id="applykills" class="mybutton1">OK</button>
 
-		<p id="maintext" style="margin-bottom: 0px; margin-left: 93px">level</p>
-		<input id="level" type="number" style="width: 80px; height: 12px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white">
-		<button id="applylevel" style=" height: 16px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white; padding-bottom: 3px">OK</button>
+		<p id="maintext" style="margin-bottom: 0px; margin-left: 87px; margin-top: 15px; font-size: 20px">level</p>
+		<input id="level" type="number" style="width: 90px; height: 22px; margin-top: 21px; margin-left: 5px; border: 2px solid #FFFFFF; background: #040404; border-radius: 7px; color: white; margin-left: 10px">
+		<button id="applylevel" class="mybutton1">OK</button>
 	</div>
 
 	<div style="display: flex">
-		<p id="maintext" style="margin-bottom: 0px">attack</p>
-		<input id="attack" type="number" style="width: 80px; height: 12px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white">
-		<button id="applyattack" style=" height: 16px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white; padding-bottom: 3px">OK</button>
+		<p id="maintext" style="margin-bottom: 0px; margin-left: 10px; margin-top: 15px; font-size: 20px">attack</p>
+		<input id="attack" type="number" style="width: 90px; height: 22px; margin-top: 21px; margin-left: 5px; border: 2px solid #FFFFFF; background: #040404; border-radius: 7px; color: white; margin-left: 10px">
+		<button id="applyattack" class="mybutton1">OK</button>
 
-		<p id="maintext" style="margin-bottom: 0px; margin-left: 72px">armor</p>
-		<input id="armor" type="number" style="width: 80px; height: 12px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white">
-		<button id="applyarmor" style=" height: 16px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white; padding-bottom: 3px">OK</button>
+		<p id="maintext" style="margin-bottom: 0px; margin-left: 70px; margin-top: 15px; font-size: 20px">armor</p>
+		<input id="armor" type="number" style="width: 90px; height: 22px; margin-top: 21px; margin-left: 5px; border: 2px solid #FFFFFF; background: #040404; border-radius: 7px; color: white; margin-left: 10px">
+		<button id="applyarmor" class="mybutton1">OK</button>
 	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript" src="/eel.js"></script>
