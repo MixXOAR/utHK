@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>utHK</title>
+	<link rel="icon" type="image/jpg" href="favicon.jpg">
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+		body {background: #030200;}
+		#maintext {text-shadow: 1px 1px 2px white; font-family: 'Oswald', sans-serif; color: white}
+	</style>
+</head>
+<body>
+	<h1 id="maintext" style="margin-bottom: 0px; display: flex">utHK<p style="font-size: 13px; display: flex; margin-bottom: 0px; margin-left: 3px;margin-top: 23px;">UNDERTALE V1.001 CHEAT</p></h1>
+	<div style="display: flex">
+		<p id="maintext" style="margin-bottom: 0px">health</p>
+		<input id="health" type="number" style="width: 90px; height: 12px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white">
+		<button id="applyhealth" style=" height: 16px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white; padding-bottom: 3px">OK</button>
+
+		<p id="maintext" style="margin-bottom: 0px; margin-left: 59px">money</p>
+		<input id="money" type="number" style="width: 80px; height: 12px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white">
+		<button id="applymoney" style=" height: 16px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white; padding-bottom: 3px">OK</button>
+	</div>
+
+	<div style="display: flex">
+		<p id="maintext" style="margin-bottom: 0px">nickname</p>
+		<input id="nickname" style="width: 80px; height: 12px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white">
+		<button id="applynickname" style=" height: 16px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white; padding-bottom: 3px">OK</button>
+
+		<p id="maintext" style="margin-bottom: 0px; margin-left: 40px">nickflex</p>
+		<input id="nickflex" style="width: 80px; height: 12px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white">
+		<button id="applynickflex" style=" height: 16px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white; padding-bottom: 3px">OK</button>
+	</div>
+
+	<div style="display: flex">
+		<p id="maintext" style="margin-bottom: 0px">kills</p>
+		<input id="kills" type="number" style="width: 80px; height: 12px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white">
+		<button id="applykills" style=" height: 16px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white; padding-bottom: 3px">OK</button>
+
+		<p id="maintext" style="margin-bottom: 0px; margin-left: 93px">level</p>
+		<input id="level" type="number" style="width: 80px; height: 12px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white">
+		<button id="applylevel" style=" height: 16px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white; padding-bottom: 3px">OK</button>
+	</div>
+
+	<div style="display: flex">
+		<p id="maintext" style="margin-bottom: 0px">attack</p>
+		<input id="attack" type="number" style="width: 80px; height: 12px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white">
+		<button id="applyattack" style=" height: 16px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white; padding-bottom: 3px">OK</button>
+
+		<p id="maintext" style="margin-bottom: 0px; margin-left: 72px">armor</p>
+		<input id="armor" type="number" style="width: 80px; height: 12px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white">
+		<button id="applyarmor" style=" height: 16px; margin-top: 21px; margin-left: 5px; border: 1px solid #FFFFFF; background: #030200; border-radius: 3px; color: white; padding-bottom: 3px">OK</button>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/eel.js"></script>
+	<script>
+		async function set_health() {await eel.set_fight_health(document.getElementById('health').value)();};
+		async function set_money() {await eel.set_money(document.getElementById('money').value)();await eel.set_real_gold(document.getElementById('money').value)();};
+		async function set_nickname() {await eel.fight_nickname(document.getElementById('nickname').value)();alert('Restart the game');};
+		async function set_nickflex() {await eel.start_an(document.getElementById('nickflex').value)();};
+		async function set_kills() {await eel.set_kills(document.getElementById('kills').value)();alert('Restart the game');};
+		async function set_level() {await eel.set_level(document.getElementById('level').value)();alert('Restart the game');};
+		async function set_attack() {await eel.set_kills(document.getElementById('attack').value)();alert('Restart the game');};
+		async function set_armor() {await eel.set_level(document.getElementById('armor').value)();alert('Restart the game');};
+		jQuery('#applyhealth').on('click', function() {set_health();});
+		jQuery('#applymoney').on('click', function() {set_money();});
+		jQuery('#applynickname').on('click', function() {set_nickname();});
+		jQuery('#applynickflex').on('click', function() {set_nickflex();});
+		jQuery('#applykills').on('click', function() {set_kills();});
+		jQuery('#applylevel').on('click', function() {set_level();});
+		jQuery('#applyattack').on('click', function() {set_attack();});
+		jQuery('#applyarmor').on('click', function() {set_armor();});
+	</script>
+</body>
+</html>
