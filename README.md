@@ -1,5 +1,5 @@
 # utHK
-undertale cheat|trainer|hack with web GUI
+undertale python cheat|trainer|hack with web GUI
 
 # 1. start game(first save)
 
