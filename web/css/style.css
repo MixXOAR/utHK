@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+body {
+	font-family: 'Anton', sans-serif;
+	background: #1E1E1E;
+	user-select: none;
+	transition: 0.5s;
+	cursor: none;
+}
+#header_text {
+	color: #FF8F00;
+	font-size: 40px;
+	padding-left: 10px;
+	padding-top: 5px;
+	float: left;
+}
+#build_text {
+	color: #FF8F00;
+	font-size: 20px;
+	padding-left: 10px;
+	padding-top: 30px;
+	float: left;
+}
+#header {
+	background: #131313; 
+	height: 70px;
+}
+.tabs {
+    position: relative; /* Относительное позиционирование */
+    padding-left: 10px;
+    cursor: none;
+}
+.tab, .tab-title {
+    display: inline-block; /* Выстраиваем по горизонтали */
+}
+.tab input[type="radio"] { display: none; }
+.tab-title {
+    background: #1E1E1E; /* Цвет фона */
+    padding: 5px 10px; /* Поля вокруг текста */
+    border: 1px solid #666; /* Параметры рамки */
+    border-bottom: none; /* Снизу линию убираем */
+}
+.tab-content {
+    position: absolute; /* Абсолютное позиционирование */
+    border: 1px solid #666; /* Параметры рамки */
+    padding: 10px; /* Поля вокруг текста */
+    left: 10px; /* Размещаем у левого края */
+    width: calc(100% - 20px); /* Ширина содержимого */
+    display: none; /* Прячем вкладку */
+}
+.tab :checked + .tab-title {
+    position: relative; /* Относительное позиционирование */
+    background: #131313; /* Цвет фона */
+    top: 1px; /* Сдвигаем вниз */
+    z-index: 1; /* Отображаем поверх содержимого */
+}
+.tab :checked ~ .tab-content {
+    display: block; /* Показываем активную вкладку */
+}
+#content {
+	color:#FF8F00;
+}
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 24px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #131313;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 6px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #FF8F00;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+#text_functions {
+	font-size: 16px;
+	padding-right: 10px;
+	float: left;
+}
+
+#person_body {
+	transition: .5s;
+	position: relative;
+    display: inline-block;
+	width: 20px;
+	height: 20px;
+	background-color: #131313;
+	border-right: 5px solid #666;
+}
+#person_body:checked {
+	transition: .5s;
+	border-right: 5px solid #666;
+}
+input {
+	cursor: none
+}
+label {
+	cursor: none
+}
+button {
+	cursor: none
+}
+.final_buttons {
+	cursor: none;
+	border: 1px solid #666;
+	color: #FF8F00;
+	background-color: #131313;
+}
+
+.final_buttons:checked {
+	background-color: #fff
+}
